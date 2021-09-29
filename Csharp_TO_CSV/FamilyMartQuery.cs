@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Csharp_TO_CSV
 {
-    class FamilyMart
+    class FamilyMartQuery
     {
 
         const string Src = "FamilyMart";
@@ -18,7 +18,7 @@ namespace Csharp_TO_CSV
         const string Barcode3_head = "00316823000";
 
 
-        public FamilyMart(string tran_no, string barcode2, string barcode3)
+        public FamilyMartQuery(string tran_no, string barcode2, string barcode3)
         {
             this.SRC = Src;
             this.TEN_CODE = Ten_code;
@@ -28,18 +28,8 @@ namespace Csharp_TO_CSV
             this.PAY_TIME = Pay_time;
             this.BARCODE1 = Barcode1;
             this.BARCODE2 = Barcode2_head + barcode2;//補隨機 8 碼
-            this.BARCODE3 = Barcode3_head + barcode3;//補隨機 4 碼
+            this.BARCODE3 = Barcode3_head + barcode3;//補隨機 1-20000
         }
-
-        //public FamilyMart(string barcode2)
-        //{
-        //    this.BARCODE2 = Barcode2_head + barcode2;//補隨機 8 碼
-        //}
-
-        //public FamilyMart(string barcode3)
-        //{
-        //    this.BARCODE3 = Barcode3_head + barcode3;//補隨機 4 碼
-        //}
 
         public string SRC { get; set; }
 
@@ -58,8 +48,6 @@ namespace Csharp_TO_CSV
         public string BARCODE2 { get; set; }
 
         public string BARCODE3 { get; set; }
-
-        public string MyProperty { get; set; }
 
     }
 }
