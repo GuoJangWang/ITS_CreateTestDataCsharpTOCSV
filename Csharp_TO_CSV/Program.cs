@@ -26,6 +26,8 @@ namespace Csharp_TO_CSV
         const string Querycoupfilepath = @"C:\Users\John\Desktop\FamilyMartTestData_Querycoup.csv";
         const string Paycoupfilepath = @"C:\Users\John\Desktop\FamilyMartTestData_Paycoup.csv";
 
+        const string PayfilepathSerial = @"C:\Users\John\Desktop\Serial.csv";
+
         static Random tran_no_5 = new Random();
         static Random barcode2_8 = new Random();
         static Random barcode3 = new Random();
@@ -115,14 +117,12 @@ namespace Csharp_TO_CSV
             #endregion
             
 
-
-            BuildPaysTestData<FamilyMartPay>(Payfilepath, CreatePayData());
-            BuildQuerysTestData<FamilyMartQuery>(Queryfilepath, CreateQueryData());
-
-            //CreatCoupData();
-            BuildPaysTestData<FamilyMartPay>(Paycoupfilepath, CoupPayData);
-            BuildQuerysTestData<FamilyMartQuery>(Querycoupfilepath, CoupQueryData);
-
+            CreatePayDataSerial();
+            BuildTestData<FamilyMartPay>(PayfilepathSerial,CreatePayDataSerial());
+            //BuildPaysTestData<FamilyMartPay>(Payfilepath, CreatePayData());
+            //BuildQuerysTestData<FamilyMartQuery>(Queryfilepath, CreateQueryData());
+            Console.WriteLine("處理完成");
+            
         }
 
         static List<FamilyMartPay> CreatePayData()
@@ -211,7 +211,7 @@ namespace Csharp_TO_CSV
             }
         }
 
-        static void BuildPaysTestData<T>(string FilePath, List<T> data)
+        static void BuildTestData<T>(string FilePath, List<T> data)
         {
             using (var file = new StreamWriter(FilePath))
             {
@@ -233,6 +233,43 @@ namespace Csharp_TO_CSV
             }
         }
 
+        //static List<FamilyMartQuery> CreateQueryDataSerial()
+        //{
+
+        //} 
+
+        static List<FamilyMartPay> CreatePayDataSerial()
+        {
+            List<FamilyMartPay> familyMartsPay = new List<FamilyMartPay>();
+
+            for (int i = 10000; i < RequestDataNum +10000- 1; i++)
+            {
+                //var b2value = barcode2_8.Next(bar2randomhead, bar2randomlast).ToString();
+                //var b3value = barcode3.Next(bar3randomhead, bar3randomlast).ToString();
+                var tranno = i.ToString();
+
+                //while (familyMartsPay.Where(x => x.BARCODE2 == b2value).Count() != 0)
+                //{
+                //    b2value = barcode2_8.Next(bar2randomhead, bar2randomlast).ToString();
+                //}
+
+                //while (familyMartsPay.Where(x => x.BARCODE3 == b3value).Count() != 0)
+                //{
+                //    b3value = barcode3.Next(bar3randomhead, bar3randomlast).ToString();
+                //}
+
+                //while (familyMartsPay.Where(x => x.TRAN_NO == tranno).Count() != 0)
+                //{
+                //    tranno = tran_no_5.Next(trannohead, trannolast).ToString();
+                //}
+
+                familyMartsPay.Add(new FamilyMartPay(tranno));
+            }
+
+            return familyMartsPay;
+        }
+
+        #region 待處理
         //static void CreatCoupData()
         //{
         //    CoupQueryData = new List<FamilyMartQuery>();
@@ -264,6 +301,8 @@ namespace Csharp_TO_CSV
         //    }
 
         //}
+        #endregion
+        
 
     }
 }

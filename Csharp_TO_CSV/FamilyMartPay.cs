@@ -31,6 +31,12 @@ namespace Csharp_TO_CSV
             this.BARCODE3 = Barcode3_head + paynumber;//補隨機 1-20000
         }
 
+        //serial唯一序號
+        public FamilyMartPay(string tran_no)
+        {
+            this.TRAN_NO = Tran_no + tran_no;//隨機補5碼
+        }
+
 
         public string SRC { get; set; }
 
